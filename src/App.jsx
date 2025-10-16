@@ -11,7 +11,7 @@ const App = () => {
     HbA1c_level: "",
     blood_glucose_level: "",
   });
-
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -35,7 +35,7 @@ const App = () => {
         heart_disease: form.heart_disease === "1" ? 1 : 0,
       };
 
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/predict`, {
+      const response = await fetch(`${API_BASE_URL}/api/predict`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
